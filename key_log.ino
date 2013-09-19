@@ -83,19 +83,23 @@ void printKeys(){
        if (key_R2_been_pressed){
          //11X
          if (key_R3_been_pressed){
-           //111  R7
+           ///111  R7
+           strcat(toPrint, "R7");
          }
          else {
            //110  R6
+           strcat(toPrint, "R6");
          }
        }
        else {
          //10X
-         if (key_3_been_pressed){
+         if (key_R3_been_pressed){
            //101  R5
+           strcat(toPrint, "R5");
          }
          else{
          //100  R4
+         strcat(toPrint, "R4");
          }
        }
     }
@@ -105,30 +109,33 @@ void printKeys(){
           //01X  
           if (key_R3_been_pressed){
             //011  R3
+            strcat(toPrint, "R3");
           }
           else {
             //010  R2
+            strcat(toPrint, "R2");
           }
         }
         else{
         //00X
            if (key_R3_been_pressed){
             //001  R1
+             strcat(toPrint, "R1");
           }
   
         }
         
       }
          
-       }
+       
          
     
     
     
-    if (key_a_been_pressed) {strcpy(toPrint, "a");}
-    if (key_b_been_pressed) {strcat(toPrint, "b");}
-    if (key_c_been_pressed) {strcat(toPrint, "c");}
-    if (key_d_been_pressed) {strcat(toPrint, "d");}
+    //if (key_a_been_pressed) {strcat(toPrint, "a");}
+    //if (key_b_been_pressed) {strcat(toPrint, "b");}
+    //if (key_c_been_pressed) {strcat(toPrint, "c");}
+    //if (key_d_been_pressed) {strcat(toPrint, "d");}
     strcat(toPrint, '\0');
     Serial.println(toPrint);
   }
