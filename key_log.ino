@@ -2,9 +2,9 @@
 
 #include <time.h>
 
-boolean key_a_been_pressed;
-boolean key_b_been_pressed;
-boolean key_c_been_pressed;
+boolean key_R1_been_pressed;
+boolean key_R2_been_pressed;
+boolean key_R3_been_pressed;
 boolean key_d_been_pressed;
 
 
@@ -13,9 +13,9 @@ unsigned long elapsed;
 int threshold = 1000;
 
 void reset(){
-  key_a_been_pressed = false;
-  key_b_been_pressed = false;
-  key_c_been_pressed = false;
+  key_R1_been_pressed = false;
+  key_R2_been_pressed = false;
+  key_R3_been_pressed = false;
   key_d_been_pressed = false;
 }
 void setup(){
@@ -49,15 +49,15 @@ boolean check(int key, boolean *key_been_pressed){
 void loop(){
   current = millis();
   //read the pushbutton value into a variable
-  int key_a = digitalRead(8);
-  int key_b = digitalRead(9);
-  int key_c = digitalRead(10);
+  int key_R1 = digitalRead(8);
+  int key_R2 = digitalRead(9);
+  int key_R3 = digitalRead(10);
   int key_d = digitalRead(3);
   
 
     //IF ANY KEY WAS PRESSED
-   if (check(key_a, &key_a_been_pressed)||check(key_b, &key_b_been_pressed) 
-   ||   check(key_c, &key_c_been_pressed) ||    check(key_d, &key_d_been_pressed)){
+   if (check(key_R1, &key_R1_been_pressed)||check(key_R2, &key_R2_been_pressed) 
+   ||   check(key_R3, &key_R3_been_pressed) ||    check(key_d, &key_d_been_pressed)){
       
      digitalWrite(13, HIGH);
   } 
@@ -76,8 +76,55 @@ void loop(){
 void printKeys(){
   char toPrint[20];
   strcpy(toPrint, "");
-  if (key_a_been_pressed || key_b_been_pressed || 
-  key_c_been_pressed||key_d_been_pressed ){
+  if (key_R1_been_pressed || key_R2_been_pressed || 
+  key_R3_been_pressed||key_d_been_pressed ){
+    if (key_R1_been_pressed){
+      //1XX
+       if (key_R2_been_pressed){
+         //11X
+         if (key_R3_been_pressed){
+           //111  R7
+         }
+         else {
+           //110  R6
+         }
+       }
+       else {
+         //10X
+         if (key_3_been_pressed){
+           //101  R5
+         }
+         else{
+         //100  R4
+         }
+       }
+    }
+      else{
+        //0XX
+        if (key_R2_been_pressed){
+          //01X  
+          if (key_R3_been_pressed){
+            //011  R3
+          }
+          else {
+            //010  R2
+          }
+        }
+        else{
+        //00X
+           if (key_R3_been_pressed){
+            //001  R1
+          }
+  
+        }
+        
+      }
+         
+       }
+         
+    
+    
+    
     if (key_a_been_pressed) {strcpy(toPrint, "a");}
     if (key_b_been_pressed) {strcat(toPrint, "b");}
     if (key_c_been_pressed) {strcat(toPrint, "c");}
