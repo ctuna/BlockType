@@ -8,16 +8,17 @@ boolean key_L2_been_pressed;
 boolean key_L3_been_pressed;
 char letter[8][8]={
 {'0', '1', '2', '3', '4', '5', '6', '7'},  
-{'X', 'b', 'c', 'd', 'e', 'f', 'g', '7'},
-{'x', 'b', 'c', 'd', 'e', 'f', 'g', '7'},
-{'Y', 'b', 'c', 'd', 'e', 'f', 'g', '7'},
-{'y', 'b', 'c', 'd', 'e', 'f', 'g', '7'},
-{'U', 'b', 'c', 'd', 'e', 'f', 'g', '7'},
-{'u', 'b', 'c', 'd', 'e', 'f', 'F', 'P'}};
+{'1', '@', '#', '$', '%', '^', '*', ';'},
+{'2', 'b', 'c', 'd', 'e', 'f', 'g', '7'},
+{'3', 'b', 'c', 'd', 'e', 'f', 'g', '7'},
+{'4', 'b', 'c', 'd', ' ', 'f', 'g', '7'},
+{'5', 'b', 'c', 'd', 'e', 'f', 'g', '7'},
+{'6', 'b', 'c', 'd', 'e', 'f', 'F', 'P'},
+{'7', 'b', 'c', 'd', 'e', 'f', 'F', 'P'}};
 
 unsigned long last_press, current;
 unsigned long elapsed;
-int threshold = 1000;
+int threshold = 50;
 
 void reset(){
   key_R1_been_pressed = false;
@@ -88,7 +89,7 @@ void loop(){
   else {
     //NO KEY WAS PRESSED 
     digitalWrite(13, LOW);
-    if (current - last_press > 1000){
+    if (current - last_press > threshold){
       //SUBMIT GESTURE IF THERE WAS ONE
       //CLEAR ALL BOOLEANS 
       printKeys();
